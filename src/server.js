@@ -72,10 +72,11 @@ server.applyMiddleware({ app })
 exports.start = async () => {
     // console.log("checking database")
     try {
-        // SKIPPING DATABASE CHECKS, HANGS NOW WITH THE PARTITIONING
-        // console.log(beehive)
-        // await beehive.ensureDatabase(schema)
-        // console.log("database checked")
+        if(process.env.ENVIRONMENT == 'local') {
+            console.log(beehive)
+            await beehive.ensureDatabase(schema)
+            console.log("database checked")
+        }
         return app.listen({ port: 4000 }, () =>
           console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
         )
