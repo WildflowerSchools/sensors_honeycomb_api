@@ -36,6 +36,11 @@ exports.typeDefs = `
     last_name: String
     nickname: String
     short_name: String
+    anonymized_name: String
+    anonymized_first_name: String
+    anonymized_last_name: String
+    anonymized_nickname: String
+    anonymized_short_name: String
     person_type: PersonType
     transparent_classroom_id: Int
     # Environment assignments associated with this device
@@ -146,6 +151,11 @@ exports.typeDefs = `
     last_name: String
     nickname: String
     short_name: String
+    anonymized_name: String
+    anonymized_first_name: String
+    anonymized_last_name: String
+    anonymized_nickname: String
+    anonymized_short_name: String
     person_type: PersonType
     transparent_classroom_id: Int
   }
@@ -156,6 +166,11 @@ exports.typeDefs = `
     last_name: String
     nickname: String
     short_name: String
+    anonymized_name: String
+    anonymized_first_name: String
+    anonymized_last_name: String
+    anonymized_nickname: String
+    anonymized_short_name: String
     person_type: PersonType
     transparent_classroom_id: Int
   }
@@ -251,7 +266,7 @@ exports.typeDefs = `
     # Get a person
     getPerson(person_id: ID!): Person @beehiveGet(target_type_name: "Person")
     # Find people based on one or more of their properties
-    findPersons(name: String, first_name: String, last_name: String, nickname: String, short_name: String, person_type: PersonType, transparent_classroom_id: Int, page: PaginationInput): PersonList @beehiveSimpleQuery(target_type_name: "Person")
+    findPersons(name: String, first_name: String, last_name: String, nickname: String, short_name: String, anonymized_first_name: String, anonymized_last_name: String, anonymized_nickname: String, anonymized_short_name: String, person_type: PersonType, transparent_classroom_id: Int, page: PaginationInput): PersonList @beehiveSimpleQuery(target_type_name: "Person")
     # Find people using a complex query
     searchPersons(query: QueryExpression!, page: PaginationInput): PersonList @beehiveQuery(target_type_name: "Person")
 
