@@ -41,7 +41,7 @@ const jwtCheck = jwt({
         jwksRequestsPerMinute: 5,
         jwksUri: "https://wildflowerschools.auth0.com/.well-known/jwks.json"
     }),
-    audience: 'https://honeycomb.api.wildflowerschools.org',
+    audience: 'wildflower-tech.org',
     issuer: "https://wildflowerschools.auth0.com/",
     algorithms: ['RS256']
 })
