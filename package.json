@@ -38,7 +38,7 @@
     "dependencies": {
         "@wildflowerschools/graphql-beehive": "^1.4.8",
         "apollo": "~1.9.2",
-        "apollo-server": "~2.14.2",
+        "apollo-server": "~2.25.3",
         "apollo-server-express": "~2.14.2",
         "axios": ">=0.21.1",
         "body-parser": "~1.18.3",
