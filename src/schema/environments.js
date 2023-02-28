@@ -2,10 +2,13 @@ exports.typeDefs = `
 
   type Environment @beehiveTable(table_name: "environments", pk_column: "environment_id") {
     environment_id: ID!
-    name: String!,
+    name: String!
+    display_name: String
     transparent_classroom_id: Int
     description: String
     location: String
+    timezone_name: String
+    timezone_abbreviation: String
     assignments: [Assignment!] @beehiveAssignmentFilter(target_type_name: "Assignment", assignee_field: "environment")
     layouts: [Layout!] @beehiveAssignmentFilter(target_type_name: "Layout", assignee_field: "environment")
   }
@@ -17,16 +20,22 @@ exports.typeDefs = `
 
   input EnvironmentInput {
     name: String!
+    display_name: String
     transparent_classroom_id: Int
     description: String
     location: String
+    timezone_name: String
+    timezone_abbreviation: String
   }
 
   input EnvironmentUpdateInput {
     name: String
+    display_name: String
     transparent_classroom_id: Int
     description: String
     location: String
+    timezone_name: String
+    timezone_abbreviation: String
   }
 
   type Person @beehiveTable(table_name: "persons", pk_column: "person_id") {
@@ -246,7 +255,7 @@ exports.typeDefs = `
     # Get an environment
     getEnvironment(environment_id: ID!): Environment @beehiveGet(target_type_name: "Environment")
     # Find environments based on one or more of their properties
-    findEnvironments(name: String, transparent_classroom_id: Int, location: String, page: PaginationInput): EnvironmentList @beehiveSimpleQuery(target_type_name: "Environment")
+    findEnvironments(name: String, display_name: String, transparent_classroom_id: Int, location: String, page: PaginationInput): EnvironmentList @beehiveSimpleQuery(target_type_name: "Environment")
     # Find environments based on one or more of their properties (DEPRECATED, use findEnvironments instead)
     findEnvironment(name: String, location: String): EnvironmentList @beehiveSimpleQuery(target_type_name: "Environment")
     # Find environments using a complex query
