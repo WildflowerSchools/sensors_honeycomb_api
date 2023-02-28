@@ -32,7 +32,6 @@ steps:
       from_secret: docker_password
     repo: wildflowerschools/sensors_honeycomb_api
 
-
 services:
 - name: postgres-ci
   image: postgres:12.4
@@ -40,3 +39,10 @@ services:
     POSTGRES_PASSWORD: "iamaninsecurepassword"
     POSTGRES_USER: "beehive_user"
     POSTGRES_DB: "beehive-tests-integrated"
+
+trigger:
+  branch:
+    - main
+  event:
+    exclude:
+      - pull_request
